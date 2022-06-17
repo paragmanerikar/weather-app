@@ -1,5 +1,3 @@
-console.log("The JS is loaded.");
-
 const weatherForm = document.querySelector("form");
 const search = document.querySelector("input");
 let messageOne = document.querySelector("#message-1");
@@ -14,7 +12,6 @@ weatherForm.addEventListener("submit", (e) => {
 
   fetch("http://localhost:3000/api/weather?search=" + location).then(
     (response) => {
-      console.log(response);
       response.json().then((data) => {
         if (data.error) {
           messageOne.textContent = data.error;
