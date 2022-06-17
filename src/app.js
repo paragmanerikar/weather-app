@@ -3,9 +3,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const hbs = require("hbs");
-const getWeather =require('./weather-service')
+const getWeather = require("./weather-service");
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const publicDir = path.join(__dirname, "./public");
 const viewDir = path.join(__dirname, "./templates/views");
 const partialsDir = path.join(__dirname, "./templates/partials");
@@ -39,7 +39,7 @@ app.get("/help", (req, res) => {
 
 app.get("/api/weather", (req, res) => {
   const location = req.query.search;
-  getWeather(location,(data)=>{
+  getWeather(location, (data) => {
     res.send(data);
   });
 });
